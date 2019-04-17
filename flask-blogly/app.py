@@ -1,7 +1,7 @@
 """Blogly application."""
 
 from flask import Flask, request, render_template, redirect
-from models import db, connect_db
+from models import db, connect_db, User
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -22,7 +22,8 @@ def notHome():
 
 @app.route('/users')
 def users():
-    return render_template('/users.html')
+    users = User.query.all()
+    return render_template('/users.html', user_list=users)
 
 
 @app.route('/users/new')
@@ -36,21 +37,21 @@ def new_user_submit():
     return redirect('/users')
 
 
-@app.route('/users/<int:user-id>')
+@app.route('/users/<int:user_id>')
 def user_page():
     return render_template('/userDetails.html')
 
 
-@app.route('/users/<int:user-id>/edit')
+@app.route('/users/<int:user_id>/edit')
 def display_edit():
     return render_template('editUser.html')
 
 
-@app.route('/users/<int:user-id>/edit', methods=["POST"])
+@app.route('/users/<int:user_id>/edit', methods=["POST"])
 def edit_user():
     return redirect('/users')
 
-@app.route('/users/<int:user-id>/delete')
+@app.route('/users/<int:user_id>/delete')
 def delete_user():
-    
+
     return redirect('/users')

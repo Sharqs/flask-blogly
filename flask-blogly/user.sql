@@ -1,0 +1,10 @@
+insert into user (id, first_name, last_name, image_url) values (1, 'Ganny', 'Danihelka', 'http://dummyimage.com/200x152.bmp/cc0000/ffffff');
+insert into user (id, first_name, last_name, image_url) values (2, 'Adams', 'Ughelli', 'http://dummyimage.com/126x133.bmp/cc0000/ffffff');
+insert into user (id, first_name, last_name, image_url) values (3, 'Brew', 'Blueman', 'http://dummyimage.com/195x124.png/ff4444/ffffff');
+insert into user (id, first_name, last_name, image_url) values (4, 'Angelia', 'Domb', 'http://dummyimage.com/201x104.jpg/dddddd/000000');
+insert into user (id, first_name, last_name, image_url) values (5, 'Janie', 'Skeats', 'http://dummyimage.com/236x131.png/cc0000/ffffff');
+insert into user (id, first_name, last_name, image_url) values (6, 'Hilarius', 'Beckey', 'http://dummyimage.com/131x102.png/dddddd/000000');
+insert into user (id, first_name, last_name, image_url) values (7, 'Victoria', 'Flode', 'http://dummyimage.com/110x201.bmp/dddddd/000000');
+insert into user (id, first_name, last_name, image_url) values (8, 'Billy', 'Rubinshtein', 'http://dummyimage.com/176x147.bmp/cc0000/ffffff');
+insert into user (id, first_name, last_name, image_url) values (9, 'Breena', 'Baldassi', 'http://dummyimage.com/106x144.jpg/5fa2dd/ffffff');
+insert into user (id, first_name, last_name, image_url) values (10, 'Derron', 'Ridesdale', 'http://dummyimage.com/134x167.png/dddddd/000000');
