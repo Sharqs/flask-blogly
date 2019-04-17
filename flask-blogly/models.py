@@ -12,7 +12,7 @@ def connect_db(app):
 class User(db.Model):
     """user."""
 
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id = db.Column(db.Integer,
                     primary_key=True,
@@ -23,5 +23,5 @@ class User(db.Model):
     last_name = db.Column(db.String(50),
                      nullable=False,
                      unique=True)
-    image_url = db.Column(db.String(50),
+    image_url = db.Column(db.String(),
                      nullable=False)

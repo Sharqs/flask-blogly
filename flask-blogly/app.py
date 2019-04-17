@@ -38,20 +38,24 @@ def new_user_submit():
 
 
 @app.route('/users/<int:user_id>')
-def user_page():
-    return render_template('/userDetails.html')
+def user_page(user_id):
+    profile = User.query.get_or_404(user_id)
+    print(profile)
+    return render_template('/userDetails.html', profile=profile)
 
 
 @app.route('/users/<int:user_id>/edit')
-def display_edit():
-    return render_template('editUser.html')
+def display_edit(user_id):
+    profile = User.query.get_or_404(user_id)
+    return render_template('editUser.html', profile=profile)
 
 
 @app.route('/users/<int:user_id>/edit', methods=["POST"])
-def edit_user():
+def edit_user(user_id):
+    profile = User.query.get_or_404(user_id)
+    profile
     return redirect('/users')
 
 @app.route('/users/<int:user_id>/delete')
-def delete_user():
-
+def delete_user(user_id):
     return redirect('/users')
