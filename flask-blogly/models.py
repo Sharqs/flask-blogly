@@ -26,7 +26,7 @@ class User(db.Model):
     image_url = db.Column(db.String(),
                      nullable=False)
 
-class Post(db.model):
+class Post(db.Model):
     """Post"""
 
     __tablename__= "Post"
@@ -40,9 +40,9 @@ class Post(db.model):
     content = db.Column(db.String(),
                      nullable=False,
                      unique=True)
-    created_at = db.Column(db.date(),
+    created_at = db.Column(db.String(),
                      nullable=False,
                      )                
     user_id = db.Column(db.Integer,
-                     db.Foreign_key("users.id"),
+                     db.ForeignKey("users.id"),
                      primary_key=True)

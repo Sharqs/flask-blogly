@@ -2,15 +2,24 @@
 
 {% block title %}
 <h1>{{profile.first_name}} {{profile.last_name}} </h1>
+
+<a href="/users/{{profile.id}}/edit" name="edit" class="btn btn-primary">Edit</a>
+
+<form action="/users/{{profile.id}}/delete"> 
+    <input type ="submit" value="Delete" name="delete" class="btn btn-danger">
+</form>
 {% endblock %}
 
 {% block content %}
 
 <img src={{profile.image_url}}>
 
- <a href="/users/{{profile.id}}/edit" name="edit" class="btn btn-primary">Edit</a>
+<h2> Posts </h2>
+<ul>
+    {% for post in post_list %}
+        <li><a href="">{{post.title}}</a></li>
 
-<form action="/users/{{profile.id}}/delete"> 
-    <input type ="submit" value="Delete" name="delete" class="btn btn-danger">
-</form>
+    {% endfor %}
+</ul>
+<a href="/users/{{profile.id}}/posts/new"class="btn btn-primary">Add Post</a>
 {% endblock %}

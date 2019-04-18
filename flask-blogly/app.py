@@ -1,8 +1,9 @@
 """Blogly application."""
 
 from flask import Flask, request, render_template, redirect
-from models import db, connect_db, User
+from models import db, connect_db, User, Post
 from flask_debugtoolbar import DebugToolbarExtension
+from datetime import datetime, date, time
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
@@ -47,8 +48,8 @@ def new_user_submit():
 @app.route('/users/<int:user_id>')
 def user_page(user_id):
     profile = User.query.get_or_404(user_id)
-    print(profile)
-    return render_template('/userDetails.html', profile=profile)
+    posts = Post.query.filter(Post.user_id == profile.id).all()
+    return render_template('/userDetails.html', profile=profile, post_list=posts)
 
 
 @app.route('/users/<int:user_id>/edit')
@@ -75,3 +76,22 @@ def delete_user(user_id):
     db.session.delete(profile)
     db.session.commit()
     return redirect('/users')
+
+@app.route('/users/<int:user_id>/posts/new')
+def new_post(user_id):
+    profile = User.query.get_or_404(user_id)
+    return render_template('newPost.html', profile=profile)
+
+@app.route('/users/<int:user_id>/posts/new', methods=["POST"])
+def new_post_submitted(user_id):
+    title = request.form['title']
+    content = request.form['content']
+    created_at = datetime.now()
+    print('************')
+    print(created_at)
+
+    new_post = Post(title=title, content=content, created_at=created_at, user_id=user_id)
+    db.session.add(new_post)
+    db.session.commit()
+
+    return redirect(f'/users/{user_id}')

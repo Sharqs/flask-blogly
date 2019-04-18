@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+
+{% block title %}
+<h1>Add Post for {{profile.first_name}} {{profile.last_name}}</h1>
+{% endblock %}
+
+{% block content %}
+<form action="/users/{{profile.id}}/posts/new" method="POST">
+    <div class="form-group">
+        <label for="post_title">Title</label>
+        <input id="post_title" type="text" name="title">
+    </div>
+    <div class="form-group">
+        <label for="post_content">Content</label>
+        <input id="post_content" type="text area" name="content">
+    </div>
+    </div>
+    <div class="form-group">
+        <a href="/users/{{profile.id}}" class="btn btn-info">Cancel</a> <input class="btn btn-success" type="submit" value="Add">
+    </div>
+</form>
+{% endblock %}
