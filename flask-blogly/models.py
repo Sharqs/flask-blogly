@@ -44,5 +44,4 @@ class Post(db.Model):
                      nullable=False,
                      )                
     user_id = db.Column(db.Integer,
-                     db.ForeignKey("users.id"),
-                     primary_key=True)
+                     db.ForeignKey("users.id"))
