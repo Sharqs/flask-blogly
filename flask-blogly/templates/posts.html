@@ -9,8 +9,8 @@
  <i>By {{profile.first_name}} {{profile.last_name}}</i>
 
  <form action="/posts/{{post.id}}" method="POST">
-     <a href="/users/{{profile.id}}" class="btn btn-outline-primary bg-white text-primary">Cancel</a>
+     <a href="/users" class="btn btn-outline-primary bg-white text-primary">Home</a>
      <a href="/posts/{{post.id}}/edit" class="btn btn-primary">Edit</a>
-     <input type="submit" value="Delete" class="btn btn-danger">
+     <button type="submit" class="btn btn-danger">Delete</button>
  </form>
  {% endblock %}
