@@ -33,7 +33,14 @@ def new_user():
 
 @app.route('/users', methods=["POST"])
 def new_user_submit():
-    user_data = request.form()
+    first = request.form['first']
+    last = request.form['last']
+    img = request.form['img']
+
+    new = User(first_name=first, last_name=last, image_url=img)
+    db.session.add(new)
+    db.session.commit()
+
     return redirect('/users')
 
 

@@ -1,11 +1,11 @@
 {% extends "home.html" %}
 
 {% block title %}
-    <h1> Create a user</h1>
+    <h1> Create a new User</h1>
 {% endblock %}
 
 {% block content %}
-    <form action="/user" method="POST">
+    <form action="/users" method="POST">
         <div class="form-group">
             <label for="first">First Name</label>
             <input type="text" name="first" placeholder="Enter a first name" required>
