@@ -5,20 +5,20 @@
 {% endblock %}
 
 {% block content %}
-<form action="">
+<form action="/users/{{profile.id}}/edit" method="POST">
     <div class="form-group">
         <label for="first">First Name</label>
-        <input type="text" name="first" placeholder="{{profile.first_name}}" required>
+        <input type="text" name="first" value="{{profile.first_name}}" required>
     </div>
     <div class="form-group">
         <label for="last">Last Name</label>
-        <input type="text" name="last" placeholder="{{profile.last_name}}" required>
+        <input type="text" name="last" value="{{profile.last_name}}" required>
     </div>
     <div class="form-group">
         <label for="img">Image Url</label>
-        <input type="url" name="img" placeholder="{{profile.image_url}}" required>
+        <input type="url" name="img" value="{{profile.image_url}}" required>
     </div>
-    <input type="button" value="Cancel" class="btn btn-primary">
+    <a href="/users/{{profile.id}}" class="btn btn-primary">Cancel</a>
     <input type="submit" value="Save" class="btn btn-success">
 </form>
 {% endblock %}

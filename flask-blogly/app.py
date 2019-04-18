@@ -60,7 +60,13 @@ def display_edit(user_id):
 @app.route('/users/<int:user_id>/edit', methods=["POST"])
 def edit_user(user_id):
     profile = User.query.get_or_404(user_id)
-    profile
+
+    profile.first_name = request.form['first']
+    profile.last_name = request.form['last']
+    profile.image_url = request.form['img']
+
+    db.session.commit()
+
     return redirect('/users')
 
 @app.route('/users/<int:user_id>/delete')
