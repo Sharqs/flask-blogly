@@ -1,0 +1,15 @@
+ {% extends "home.html" %}
+
+ {% block title %}
+ <h1> Tags </h1>
+ {% endblock %}
+
+ {% block content %}
+    <ul>
+        {% for tag in tags %}
+            <li><a href="/tags/{{tag.id}}">{{name}}</a></li>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary" href="/tags/new">New User</a>
+ {% endblock %}
+ 

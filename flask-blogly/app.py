@@ -1,7 +1,7 @@
 """Blogly application."""
 
 from flask import Flask, request, render_template, redirect
-from models import db, connect_db, User, Post
+from models import db, connect_db, User, Post, Tag, PostTag
 from flask_debugtoolbar import DebugToolbarExtension
 from datetime import datetime, date, time
 
@@ -161,3 +161,45 @@ def edit_post_submit(post_id):
 
     db.session.commit()
     return redirect(f'/posts/{post_id}')
+
+
+@app.route('/tags')
+def tags():
+    tags = Tag.query.all()
+    return render_template('tags.html', tags=tags)
+
+
+@app.route('/tags', methods=["POST"])
+def new_tag_submit():
+    new_tag = Tag(name=request.form['name'])
+    db.sesssion.add(new_tag)
+    db.session.commit()
+
+    return redirect(f'/tags/{new_tag.id}')
+
+
+@app.route('/tags/<int:tag_id>')
+def tag_page(tag_id):
+    tag = Tag.query.get_or_404(tag_id)
+    return render_template('/tagDetails.html', tag=tag)
+
+
+@app.route('/tags/<int:tag_id>/edit')
+def edit_tag(tag_id):
+    tag = Tag.query.get_or_404(tag_id)
+    return render_template('editTag.html', tag=tag)
+
+
+@app.route('/tags/<int:tag_id>/edit')
+def edit_tag_submit(tag_id):
+    tag = Tag.query.get_or_404(tag_id)
+    tag.name = request.form['name']
+    db.session.commit()
+    return redirect(f'/tags/{tag.id}')
+
+
+@app.route('/tags/new')
+def new_tag():
+    return render_template('/newTag.html')
+
+
